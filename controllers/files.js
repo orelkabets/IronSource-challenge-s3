@@ -103,7 +103,7 @@ class FilesController {
       // look for metadata in db
       const filesMetaData = await this._db.getMetadata({ id: fileId });
 
-      if (!filesMetaData.length) {
+      if (!filesMetaData) {
         reject({
           code: 404,
           message: "file not found!"
