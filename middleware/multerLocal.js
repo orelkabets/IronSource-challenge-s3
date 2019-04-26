@@ -1,7 +1,5 @@
 require('dotenv').config();
-const fs = require("fs-extra");
 const multer = require("multer");
-const crypto = require("crypto");
 
 const UPLOAD_PATH = process.env.UPLOAD_PATH;
 
