@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "3e32a059-c2ba-4bab-bbcc-951e22f29bb0",
+		"name": "IronSourceS3Challenge",
+		"description": "Testing IronSource S3 challenge\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/api/files",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "isPublic",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files"
+					]
+				},
+				"description": "user1 uploads public file"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/files/user1/DSC01578.JPG?metadata=true",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files?filename=DSC01886.JPG",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files"
+					],
+					"query": [
+						{
+							"key": "metadata",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+							"disabled": true
+						},
+						{
+							"key": "filename",
+							"value": "DSC01886.JPG"
+						}
+					]
+				},
+				"description": "public get user1 file by original filename"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/files/XcuG94NaJ9iKONnRKDKx",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isPublic\": false}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files",
+						"7cb4d8015f936efe0e8d0829"
+					]
+				},
+				"description": "user1 updates file access to private"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/files/user1/DSC01578.JPG",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files",
+						"7cb4d8015f936efe0e8d0829"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0"
+						}
+					]
+				},
+				"description": "user2 \"knows\" user1 file id , and trying to get it and fails"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/files",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+						"description": "user1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files",
+						"7cb4d8015f936efe0e8d0829"
+					]
+				},
+				"description": "user1 deletes his private file"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/files/XcuG94NaJ9iKONnRKDKx?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InVzZXIxIiwiaWF0IjoxNTE2MjM5MDIyfQ.hfCsZDr27e3kPFmT4FceA177UU5RRo_NqxTzaLhxjGI",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files/883f767035306cf178239f7f?metadata=true&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files",
+						"883f767035306cf178239f7f"
+					],
+					"query": [
+						{
+							"key": "metadata",
+							"value": "true"
+						},
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw"
+						}
+					]
+				},
+				"description": "user1 Get Deleted File metadata"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/files",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
+						"description": "user1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "isPublic",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files",
+						"7cb4d8015f936efe0e8d0829"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw"
+						},
+						{
+							"key": "",
+							"value": "false",
+							"description": "user1",
+							"disabled": true
+						}
+					]
+				},
+				"description": "user1 trying to download deleted file > get 404 file not found"
+			},
+			"response": []
+		}
+	]
+}
