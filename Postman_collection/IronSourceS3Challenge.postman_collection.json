@@ -55,7 +55,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files?filename=IronSourceS3Challenge.postman_collection.json",
+			"name": "http://localhost:5000/api/files/user1/IronSourceS3Challenge.postman_collection.json",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -89,19 +89,19 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files/281ef556c3dff4772d0844af",
+			"name": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					},
 					{
 						"key": "x-auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
-						"type": "text"
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw"
 					}
 				],
 				"body": {
@@ -126,19 +126,19 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files/281ef556c3dff4772d0844af?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
+			"name": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "x-auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
-						"type": "text"
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0"
 					},
 					{
 						"key": "",
-						"value": "",
-						"type": "text"
+						"type": "text",
+						"value": ""
 					}
 				],
 				"body": {
@@ -169,7 +169,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files/281ef556c3dff4772d0844af",
+			"name": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -254,7 +254,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files",
+			"name": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -262,16 +262,16 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "x-auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
 						"description": "user1",
-						"type": "text"
+						"key": "x-auth-token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0"
 					},
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
 					}
 				],
 				"body": {
