@@ -1,6 +1,6 @@
 require('dotenv').config();
 const multer = require("multer");
-
+const fs = require("fs-extra");
 const UPLOAD_PATH = process.env.UPLOAD_PATH;
 
 /**
@@ -10,7 +10,8 @@ const UPLOAD_PATH = process.env.UPLOAD_PATH;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, UPLOAD_PATH);
+        fs.ensureDirSync(UPLOAD_PATH);
+        cb(null, UPLOAD_PATH)
     }, // file names are concatanation of unique userId and original filename
     filename: (req, file, cb) => {
         cb(null, req.user.id + '-' + file.originalname);

@@ -6,11 +6,10 @@
 3. node.js index.js
 
 #### Helper Packages
-1. fs - for deleting files
-2. lokijs - in-memory nosql presistant db for saving files metadata.
+1. lokijs - in-memory nosql presistant db for saving files metadata.
 #### middlware packages
-3. multer - for actual file saving in local disk.
-4. jsonwebtoken - JWT for handling user authentication. 
+2. multer with fs-extra - for actual file saving, deleting , upload folder creation in local disk.
+3. jsonwebtoken - JWT for handling user authentication. 
 
 ### Routes
 1. **Get api/files/:username/:filename**- public get route for downloading a file by username (the user hwo uploaded the file) and file name.
