@@ -2,6 +2,10 @@
   "name": "ironsouce-challenge-s3",
   "version": "1.0.0",
   "description": "Object Storage api similar to amazon S3",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orelkabets/IronSource-challenge-s3.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
