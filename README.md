@@ -31,7 +31,7 @@ The file is deleted but the metadata remains at lokijs db with a deletedAT times
 ### POSTMAN_COLLECTION
 Under postman_collection folder there is a postman collection file with a basic flow using two predefined users: 
 
-|id|name|jwt|
+|id|name|jwt(access_token)|
 |-|-|-|
 |qAzef32F|user1|eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw|
 |hT9Lmdx|user2|eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0|
