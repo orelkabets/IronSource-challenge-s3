@@ -55,7 +55,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files/user1/DSC01578.JPG?metadata=true",
+			"name": "http://localhost:5000/api/files?filename=IronSourceS3Challenge.postman_collection.json",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -64,7 +64,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/files?filename=DSC01886.JPG",
+					"raw": "http://localhost:5000/api/files/user1/IronSourceS3Challenge.postman_collection.json?",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,31 +72,24 @@
 					"port": "5000",
 					"path": [
 						"api",
-						"files"
+						"files",
+						"user1",
+						"IronSourceS3Challenge.postman_collection.json"
 					],
 					"query": [
-						{
-							"key": "metadata",
-							"value": "true",
-							"disabled": true
-						},
 						{
 							"key": "access_token",
 							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
 							"disabled": true
-						},
-						{
-							"key": "filename",
-							"value": "DSC01886.JPG"
 						}
 					]
 				},
-				"description": "public get user1 file by original filename"
+				"description": "user2 downloads user1 public file"
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files/XcuG94NaJ9iKONnRKDKx",
+			"name": "http://localhost:5000/api/files/281ef556c3dff4772d0844af",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -116,7 +109,7 @@
 					"raw": "{\"isPublic\": false}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829",
+					"raw": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -125,7 +118,7 @@
 					"path": [
 						"api",
 						"files",
-						"7cb4d8015f936efe0e8d0829"
+						"e1b9d82e9ea037711aebd833"
 					]
 				},
 				"description": "user1 updates file access to private"
@@ -133,7 +126,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files/user1/DSC01578.JPG",
+			"name": "http://localhost:5000/api/files/281ef556c3dff4772d0844af?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -153,7 +146,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
+					"raw": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -162,7 +155,7 @@
 					"path": [
 						"api",
 						"files",
-						"7cb4d8015f936efe0e8d0829"
+						"e1b9d82e9ea037711aebd833"
 					],
 					"query": [
 						{
@@ -171,12 +164,12 @@
 						}
 					]
 				},
-				"description": "user2 \"knows\" user1 file id , and trying to get it and fails"
+				"description": "user2 \"knows\" user1 file id , he trying to get it but fails"
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/files",
+			"name": "http://localhost:5000/api/files/281ef556c3dff4772d0844af",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -186,14 +179,14 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
 					},
 					{
-						"key": "x-auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
 						"description": "user1",
-						"type": "text"
+						"key": "x-auth-token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw"
 					}
 				],
 				"body": {
@@ -201,7 +194,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829",
+					"raw": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -210,7 +203,7 @@
 					"path": [
 						"api",
 						"files",
-						"7cb4d8015f936efe0e8d0829"
+						"e1b9d82e9ea037711aebd833"
 					]
 				},
 				"description": "user1 deletes his private file"
@@ -234,7 +227,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/files/883f767035306cf178239f7f?metadata=true&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+					"raw": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833?metadata=true&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -243,7 +236,7 @@
 					"path": [
 						"api",
 						"files",
-						"883f767035306cf178239f7f"
+						"e1b9d82e9ea037711aebd833"
 					],
 					"query": [
 						{
@@ -297,7 +290,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/files/7cb4d8015f936efe0e8d0829?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
+					"raw": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFBemVmMzJGIiwibmFtZSI6InVzZXIxIn0.MCnE0A9zSIvXRjeaApxMzuMPr_cjQp1UDtQK0UuCDTw",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -306,7 +299,7 @@
 					"path": [
 						"api",
 						"files",
-						"7cb4d8015f936efe0e8d0829"
+						"e1b9d82e9ea037711aebd833"
 					],
 					"query": [
 						{
