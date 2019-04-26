@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         fs.ensureDirSync(UPLOAD_PATH);
         cb(null, UPLOAD_PATH)
-    }, // file names are concatanation of unique userId and original filename
+    }, // file names are concatenation of unique userId and original filename
     filename: (req, file, cb) => {
         cb(null, req.user.id + '-' + file.originalname);
     }
