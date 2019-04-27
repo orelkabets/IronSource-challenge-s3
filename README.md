@@ -7,7 +7,7 @@
 
 #### Helper Packages
 1. lokijs - in-memory nosql presistant db for saving files metadata.
-#### middlware packages
+#### middleware packages
 2. multer with fs-extra - for actual file saving, deleting , upload folder creation in local disk.
 3. jsonwebtoken - JWT for handling user authentication. 
 
