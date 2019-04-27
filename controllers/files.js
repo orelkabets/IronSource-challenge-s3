@@ -4,6 +4,7 @@ const fs = require("fs-extra");
 
 
 
+
 // Helper class using lokijs for saving/updaing files metadata
 class FilesController {
   constructor(filesDB) {
@@ -15,8 +16,7 @@ class FilesController {
       metadata.createdAt = Date.now().toString();
       const doc = await this._db.insertMetadata(metadata);
       // return only relevant info from db
-      let { $loki, meta, id, user, ...data } = doc;
-      return { id, metadata: data };
+      return this.filterMetadata(doc, ["$loki", "meta", "user"]);
     } catch (err) {
       return null;
     }
@@ -36,8 +36,7 @@ class FilesController {
           fileMetaData.updatedAt = Date.now().toString();
         }
         fileMetaData = await this._db.updateMetadata(fileMetaData);
-        let { $loki, meta, id, user, ...data } = fileMetaData;
-        return { id, metadata: data };
+        return this.filterMetadata(fileMetaData, ["$loki", "meta", "filename", "user"]);
       }
       return null;
     } catch (err) {
@@ -66,8 +65,9 @@ class FilesController {
 
       // get the latest document inserted
       // return only relevant info from fileMetaData
-      let { $loki, meta, id, originalname, ...data } = filesMetaData[filesMetaData.length - 1];
-      resolve({ metadata: data, id });
+      const filteredMetadata =
+        this.filterMetadata(filesMetaData[filesMetaData.length - 1], ["$loki", "meta"]);
+      resolve({ metadata: filteredMetadata, id: filteredMetadata.id });
     });
   }
 
@@ -117,8 +117,8 @@ class FilesController {
             message: "you are not allowed to perform this action"
           });
         }
-        let { $loki, meta, id, user, ...data } = fileMetaData;
-        resolve({ id, metadata: data });
+
+        resolve(this.filterMetadata(fileMetaData, ["$loki", "meta", "originalname"]));
       }
     });
   }
@@ -136,19 +136,32 @@ class FilesController {
       );
       if (metadataAndID) {
         let fileDocMeta;
-        if (metadataAndID.metadata.deletedAt) {
+        if (metadataAndID.deletedAt) {
           fileDocMeta = await this.insertMetadata(metadata);
         } else
           fileDocMeta = await this.updateMetadata(metadataAndID.id, metadata.isPublic);
-        return { id: fileDocMeta.id, metadata: fileDocMeta.metadata };
+        const { id, ...data } = fileDocMeta;
+        return { id, metadata: data };
       } else {
-        const newMetadataAndId = await this.insertMetadata(metadata);
-        return { id: newMetadataAndId.id, metadata: newMetadataAndId.metadata };
+        const { id, ...data } = await this.insertMetadata(metadata);
+        return { id, metadata: data };
       }
     } catch (err) {
       return new Error("Error setting file metadata")
     }
   }
+
+  // helper function to get subset of metadata object from db with only relevant fields
+  filterMetadata(metadata, unwantedProps) {
+    const filteredMetadata = Object.keys(metadata)
+      .filter(key => !unwantedProps.includes(key))
+      .reduce((obj, key) => {
+        obj[key] = metadata[key];
+        return obj;
+      }, {});
+    return filteredMetadata;
+  }
+
 
 
   deleteFile(dir, filename) {

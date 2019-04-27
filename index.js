@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const indexRouter = require("./routes/index");
 const filesRouter = require("./routes/files");
 const rateLimit = require("express-rate-limit");
 require('dotenv').config();
@@ -18,7 +17,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.json());
 
-app.use("/", indexRouter);
 app.use("/api/files", filesRouter);
 
 

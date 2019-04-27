@@ -12,7 +12,7 @@
 3. jsonwebtoken - JWT for handling user authentication. 
 
 ### Routes
-1. **Get api/files/:username/:filename**- public get route for downloading a file by username (the user hwo uploaded the file) and file original name.
+1. **Get api/files/:username/:filename**- public get route for downloading a file by username (the user which uploaded the file) and file original name.
 adding query parameter "metadata=true" will return json containing file's metadata.
 
 2. **Get api/files/:id** - for accessing private files (isPublic = false). access_token query parameters is required.

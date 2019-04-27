@@ -17,6 +17,7 @@ const UPLOAD_PATH = process.env.UPLOAD_PATH;
 //Public GET route for downloading file or file's metadata
 router.get("/:username/:filename", async (req, res) => {
   const { username, filename } = req.params;
+  const { metadata } = req.query;
   try {
     if (!username || !filename)
       return res.status(400).send(`Missing username or filename argumets`);
@@ -25,25 +26,25 @@ router.get("/:username/:filename", async (req, res) => {
     // check if file exists
     if (!metadataAndID) return res.status(404).send(`File not found`);
 
-    const metadata = metadataAndID.metadata;
+    const metadataFromDB = metadataAndID.metadata;
 
     // check file access type
-    if (!metadata.isPublic) {
+    if (!metadataFromDB.isPublic) {
       return res.status(401).send(`This file has no public access!`);
     }
 
     // if client request only metadata
-    if (req.query.metadata) {
-      // remove user data, isPublic from our response
-      let { user, isPublic, ...data } = metadata;
-      return res.send(data);
+    if (metadata && metadata.toLowerCase() === "true") {
+      // pick only relevant data from metadata db object
+      const { id, ...data } = filesController.filterMetadata(metadataFromDB, ["user", "isPublic","filename"]);
+      return res.send({ id, metadata: data });
     }
 
     // check if the file has been deleted.
-    if (metadata.deletedAt)
+    if (metadataFromDB.deletedAt)
       return res.status(404).send("File has been deleted");
     // download the file
-    return res.download(`${UPLOAD_PATH}/${metadata.filename}`);
+    return res.download(`${UPLOAD_PATH}/${metadataFromDB.filename}`);
   } catch (err) {
     if (err.code == null) return res.status(500).send(err);
     return res.status(500).send(`${err}`);
@@ -56,21 +57,23 @@ router.get("/:username/:filename", async (req, res) => {
   JWT access_token query param is required
 */
 router.get("/:id", async (req, res) => {
+  const { metadata } = req.query;
   try {
     const metadataAndID = await filesController.getFileByID(
       req.params.id,
       req.query.access_token
     );
     // ?metadata=true
-    if (req.query.metadata) {
-      return res.send(metadataAndID.metadata);
+    if (metadata && metadata.toLowerCase() === "true") {
+      const { id, ...data } = filesController.filterMetadata(metadataAndID, ["user", "isPublic"]);
+      return res.send({id, metadata: data});
     }
 
-    if (metadataAndID.metadata.deletedAt)
+    if (metadataAndID.deletedAt)
       return res.status(404).send("File not found!");
 
     // download the file
-    return res.download(`${UPLOAD_PATH}/${metadataAndID.metadata.filename}`);
+    return res.download(`${UPLOAD_PATH}/${metadataAndID.filename}`);
   } catch (err) {
     if (err.code == null) return res.status(500).send(err);
 
@@ -121,7 +124,8 @@ router.put("/:id", auth, async (req, res) => {
     const updatedMetadata = await filesController.updateMetadata(
       metadataAndID.id, req.body.isPublic);
 
-    res.send(updatedMetadata);
+    const { id, ...data } = updatedMetadata;
+    res.send({ id, metadata: data });
   } catch (err) {
     if (err.code == null || err.code == undefined) return res.status(500).send(err.message);
 
@@ -142,17 +146,17 @@ router.delete("/:id", auth, async (req, res) => {
       req.header("x-auth-token")
     );
 
-    if (metadataAndID.metadata.deletedAt)
+    if (metadataAndID.deletedAt)
       return res.status(404).send("File already deleted");
 
     // delete file from disk
-    filesController.deleteFile(`${UPLOAD_PATH}`, metadataAndID.metadata.filename)
+    filesController.deleteFile(`${UPLOAD_PATH}`, metadataAndID.filename)
 
     // update file's metadata
     const updatedMetadata = await filesController.updateMetadata(
-      req.params.id, metadataAndID.metadata.isPublic, true);
-
-    res.send(updatedMetadata);
+      req.params.id, metadataAndID.isPublic, true);
+    const { id, ...data } = updatedMetadata;
+    res.send({ id, metadata: data });
   } catch (err) {
     if (err.code == null || err.code == undefined) return res.status(500).send(err.message);
 
