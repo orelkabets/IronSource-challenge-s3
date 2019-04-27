@@ -17,24 +17,25 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1>IronSource S3 Challenge accepted!</h1>
+            <h1>IronSource S3 Challenge!</h1>
             <h4>Please use the following routes:</h4>
             <ul>
-                <li>Get <b>api/files/:userid/:filename</b>- public get route for downloading a file by its file name. adding
-                    query parameter "metadata=true" will return json containing file's metadata.</li>
+                <li>Get <b>api/files/:username/:filename</b> - public get route for downloading a file by username (the
+                    user hwo uploaded the file) and file original name. adding query parameter "metadata=true" will
+                    return json containing file's metadata.</li>
 
-                <li>Get <b>api/files/:id</b> - for accessing private files (isPublic = false). access_token query parameters is
-                    required. query parameter "metadata=true" also return only json contains with file's metadata.</li>
+                <li>Get <b>api/files/:id</b> - for accessing private files (isPublic = false). access_token query
+                    parameters is required. query parameter "metadata=true" also return json with file's metadata.</li>
 
-                <li>Post <b>api/files</b> - for uploading files. x-auth-token header with a user's json web token is required.
-                    user can add only one additional field to this form-data : "isPublic" Boolean which responsible for
-                    file access mode.</li>
+                <li>Post <b>api/files</b> - for uploading files. x-auth-token header with a user's json web token is
+                    required. user can add only one additional field to this form-data : "isPublic" Boolean which
+                    responsible for file access mode.</li>
 
-                <li>Put <b>api/files/:id</b> - for updating file access mode (isPublic property). x-auth-token with user's JWT
-                    is required. the file's metadata property: updatedAt timestamp updated.</li>
+                <li>Put <b>api/files/:id</b> - for updating file access mode (isPublic property). x-auth-token with
+                    user's JWT is required. the file's metadata property: updatedAt timestamp updated.</li>
 
-                <li>Delete <b>api/files/:id</b> - for deleting a file. x-auth-token with user's JWT is required. The file is
-                    deleted but the metadata remains at lokijs db with a deletedAT timestamp</li>
+                <li>Delete <b>api/files/:id</b> - for deleting a file. x-auth-token with user's JWT is required. The
+                    file is deleted but the metadata remains at lokijs db with a deletedAT timestamp</li>
             </ul>
         </div>
     </div>
