@@ -134,11 +134,6 @@
 						"key": "x-auth-token",
 						"type": "text",
 						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImhUOUxtZHgiLCJuYW1lIjoidXNlcjIifQ.Inq84KA7qi3i_RIq73AErlEcR9NOnMWeEqFHSnFNoH0"
-					},
-					{
-						"key": "",
-						"type": "text",
-						"value": ""
 					}
 				],
 				"body": {
@@ -164,16 +159,13 @@
 						}
 					]
 				},
-				"description": "user2 \"knows\" user1 file id , he trying to get it but fails"
+				"description": "user2 \"knows\" user1 file id , trying to get it but fails"
 			},
 			"response": []
 		},
 		{
 			"name": "http://localhost:5000/api/files/e1b9d82e9ea037711aebd833",
 			"request": {
-				"auth": {
-					"type": "noauth"
-				},
 				"method": "DELETE",
 				"header": [
 					{
@@ -249,7 +241,7 @@
 						}
 					]
 				},
-				"description": "user1 Get Deleted File metadata"
+				"description": "user1 Gets Deleted File metadata"
 			},
 			"response": []
 		},
