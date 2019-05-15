@@ -22,7 +22,6 @@
     "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "express-rate-limit": "^3.4.1",
     "fs-extra": "^7.0.1",
     "jsonwebtoken": "^8.5.1",
     "lokijs": "^1.5.6",
